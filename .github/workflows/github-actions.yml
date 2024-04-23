@@ -19,7 +19,10 @@ jobs:
     # jdk 17 설정
     steps:
       # Github Secret to .env
-      - uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          repository: bagtothefuture-team/bagtothefuture-backend
       - name: Create .env file
         uses: ./.github/actions/create-env-file/action.yml
       - name: Export environment variables
