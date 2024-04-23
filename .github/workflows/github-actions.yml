@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - dev
+      - feature/#141
 
 env:
   CURRENT_VERSION: "0.1.0"
@@ -32,60 +33,60 @@ jobs:
           ./gradlew -p api/member build -x test
           ./gradlew -p api/store build -x test
           ./gradlew -p api/event build -x test
-      # 멀티플랫폼 이미지 빌드 환경 설정
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      # 멀티플랫폼 이미지 빌드 환경 설정
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      # dockerhub 에 로그인
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      # docker 이미지 빌드 / dockerhub 에 푸시
-      # api/member
-      - name: member api > Build and Push Docker images
-        uses: docker/build-push-action@v5
-        with:
-          context: api/member
-          file: api/member/Dockerfile
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-member:${{ env.CURRENT_VERSION }}
-            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-member:latest
-      # api/store
-      - name: store api > Build and Push Docker images
-        uses: docker/build-push-action@v5
-        with:
-          context: api/store
-          file: api/store/Dockerfile
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-store:${{ env.CURRENT_VERSION }}
-            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-store:latest
-      # api/event
-      - name: event api > Build and Push Docker images
-        uses: docker/build-push-action@v5
-        with:
-          context: api/event
-          file: api/event/Dockerfile
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-event:${{ env.CURRENT_VERSION }}
-            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-event:latest
-      # swagger
-      - name: swagger > Build and Push Docker images
-        uses: docker/build-push-action@v5
-        with:
-          context: docs
-          file: docs/Dockerfile
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: |
-            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-swagger:${{ env.CURRENT_VERSION }}
-            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-swagger:latest
+#      # 멀티플랫폼 이미지 빌드 환경 설정
+#      - name: Set up QEMU
+#        uses: docker/setup-qemu-action@v3
+#      # 멀티플랫폼 이미지 빌드 환경 설정
+#      - name: Set up Docker Buildx
+#        uses: docker/setup-buildx-action@v3
+#      # dockerhub 에 로그인
+#      - name: Login to Docker Hub
+#        uses: docker/login-action@v3
+#        with:
+#          username: ${{ secrets.DOCKER_USERNAME }}
+#          password: ${{ secrets.DOCKER_PASSWORD }}
+#      # docker 이미지 빌드 / dockerhub 에 푸시
+#      # api/member
+#      - name: member api > Build and Push Docker images
+#        uses: docker/build-push-action@v5
+#        with:
+#          context: api/member
+#          file: api/member/Dockerfile
+#          platforms: linux/amd64,linux/arm64
+#          push: true
+#          tags: |
+#            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-member:${{ env.CURRENT_VERSION }}
+#            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-member:latest
+#      # api/store
+#      - name: store api > Build and Push Docker images
+#        uses: docker/build-push-action@v5
+#        with:
+#          context: api/store
+#          file: api/store/Dockerfile
+#          platforms: linux/amd64,linux/arm64
+#          push: true
+#          tags: |
+#            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-store:${{ env.CURRENT_VERSION }}
+#            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-store:latest
+#      # api/event
+#      - name: event api > Build and Push Docker images
+#        uses: docker/build-push-action@v5
+#        with:
+#          context: api/event
+#          file: api/event/Dockerfile
+#          platforms: linux/amd64,linux/arm64
+#          push: true
+#          tags: |
+#            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-event:${{ env.CURRENT_VERSION }}
+#            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-event:latest
+#      # swagger
+#      - name: swagger > Build and Push Docker images
+#        uses: docker/build-push-action@v5
+#        with:
+#          context: docs
+#          file: docs/Dockerfile
+#          platforms: linux/amd64,linux/arm64
+#          push: true
+#          tags: |
+#            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-swagger:${{ env.CURRENT_VERSION }}
+#            ${{ secrets.DOCKER_USERNAME }}/bagtothefuture-swagger:latest
