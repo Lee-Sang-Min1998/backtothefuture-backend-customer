@@ -21,10 +21,8 @@ jobs:
       # Github Secret to .env
       - name: checkout
         uses: actions/checkout@v4
-        with:
-          repository: bagtothefuture-team/bagtothefuture-backend
       - name: Create .env file
-        uses: ./.github/actions/create-env-file/action.yml
+        uses: ./.github/actions/create-env-file
       - name: Export environment variables
         run: |
           set -a
