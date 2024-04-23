@@ -19,6 +19,7 @@ jobs:
     # jdk 17 설정
     steps:
       # Github Secret to .env
+      - uses: actions/checkout@v4
       - name: Create .env file
         uses: ./.github/actions/create-env-file/action.yml
       - name: Export environment variables
@@ -26,7 +27,6 @@ jobs:
           set -a
           source ${{ github.workspace }}/.env
           set +a
-      - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
