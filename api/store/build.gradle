@@ -1,3 +1,6 @@
+plugins {
+    id "org.springdoc.openapi-gradle-plugin" version "1.8.0"
+}
 // 실행가능한 jar로 생성하는 옵션, main이 없는 라이브러리에서는 false로 비활성화함
 // 스프링 부트 2.0 이상이라면 bootRepackage.enabled를 사용해야 함
 bootJar { enabled = true }
@@ -21,4 +24,14 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-security"
     implementation 'org.springframework.security:spring-security-test:6.2.3'
     testImplementation 'org.springframework.security:spring-security-test:6.2.3'
+}
+
+openApi {
+    apiDocsUrl.set("http://localhost:8081/v1/v3/api-docs.yaml")
+    outputDir.set(file("$rootDir/docs/openapi"))
+    outputFileName.set("store-openapi.yaml")
+    waitTimeInSeconds.set(10)
+    customBootRun {
+        args.set(["--spring.profiles.active=dev"])
+    }
 }

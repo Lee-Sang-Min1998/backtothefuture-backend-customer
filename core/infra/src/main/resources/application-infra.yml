@@ -29,8 +29,8 @@ cloud:
   aws:
     s3:
       region: ${COULD_AWS_S3_REGION}
-      accesskey: ${CLOUD_AWS_S3_ACCESSKEY}
-      secretkey: ${CLOUD_AWS_S3_SECRETKEY}
+      accessKey: ${CLOUD_AWS_S3_ACCESSKEY}
+      secretKey: ${CLOUD_AWS_S3_SECRETKEY}
 
 logging:
   level:

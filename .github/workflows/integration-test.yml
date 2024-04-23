@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - dev
+      - feature/#141
 
 jobs:
   integration-test:
@@ -17,20 +18,12 @@ jobs:
       - uses: actions/checkout@v4
       # Github Secret to .env
       - name: Create .env file
+        uses: ./.github/actions/create-env-file/action.yml
+      - name: Export environment variables
         run: |
-          echo OAUTH_KAKAO_CLIENTID=${{ secrets.OAUTH_KAKAO_CLIENTID }} >> .env
-          echo OAUTH_KAKAO_REDIRECT_URL=${{ secrets.OAUTH_KAKAO_REDIRECT_URL }} >> .env
-          echo OAUTH_KAKAO_CLIENT_SECRET=${{ secrets.OAUTH_KAKAO_CLIENT_SECRET }} >> .env
-          echo OAUTH_NAVER_CLIENTID=${{ secrets.OAUTH_NAVER_CLIENTID }} >> .env
-          echo OAUTH_NAVER_CLIENT_SECRET=${{ secrets.OAUTH_NAVER_CLIENT_SECRET }} >> .env
-          echo COOLSMS_FROM_PHONE_NUMBER=${{ secrets.COOLSMS_FROM_PHONE_NUMBER }} >> .env
-          echo COOLSMS_API_KEY=${{ secrets.COOLSMS_API_KEY }} >> .env
-          echo COOLSMS_API_SECRET_KEY=${{ secrets.COOLSMS_API_SECRET_KEY }} >> .env
-          echo MAIL_USERNAME=${{ secrets.MAIL_USERNAME }} >> .env
-          echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
-          echo COULD_AWS_S3_REGION=${{ secrets.COULD_AWS_S3_REGION }} >> .env
-          echo CLOUD_AWS_S3_ACCESSKEY=${{ secrets.CLOUD_AWS_S3_ACCESSKEY }} >> .env
-          echo CLOUD_AWS_S3_SECRETKEY=${{ secrets.CLOUD_AWS_S3_SECRETKEY }} >> .env
+          set -a
+          source ${{ github.workspace }}/.env
+          set +a
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:

@@ -18,6 +18,14 @@ jobs:
       contents: read
     # jdk 17 설정
     steps:
+      # Github Secret to .env
+      - name: Create .env file
+        uses: ./.github/actions/create-env-file/action.yml
+      - name: Export environment variables
+        run: |
+          set -a
+          source ${{ github.workspace }}/.env
+          set +a
       - uses: actions/checkout@v4
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -33,6 +41,12 @@ jobs:
           ./gradlew -p api/member build -x test
           ./gradlew -p api/store build -x test
           ./gradlew -p api/event build -x test
+          mkdir -p /docs/openapi
+          ./gradlew :api:member:clean :api:member:generateOpenApiDocs
+          ./gradlew :api:store:clean :api:store:generateOpenApiDocs
+          ./gradlew :api:event:clean :api:event:generateOpenApiDocs
+          cd /docs/openapi
+          ls -l
 #      # 멀티플랫폼 이미지 빌드 환경 설정
 #      - name: Set up QEMU
 #        uses: docker/setup-qemu-action@v3

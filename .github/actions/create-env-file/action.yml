@@ -1,0 +1,22 @@
+name: 'Create Environment File'
+description: 'Creates .env file from provided secrets'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Create .env file
+      shell: bash
+      run: |
+        echo "OAUTH_KAKAO_CLIENTID=${{ secrets.OAUTH_KAKAO_CLIENTID }}" >> ${{ github.workspace }}/.env
+        echo "OAUTH_KAKAO_REDIRECT_URL=${{ secrets.OAUTH_KAKAO_REDIRECT_URL }}" >> ${{ github.workspace }}/.env
+        echo "OAUTH_KAKAO_CLIENT_SECRET=${{ secrets.OAUTH_KAKAO_CLIENT_SECRET }}" >> ${{ github.workspace }}/.env
+        echo "OAUTH_NAVER_CLIENTID=${{ secrets.OAUTH_NAVER_CLIENTID }}" >> ${{ github.workspace }}/.env
+        echo "OAUTH_NAVER_CLIENT_SECRET=${{ secrets.OAUTH_NAVER_CLIENT_SECRET }}" >> ${{ github.workspace }}/.env
+        echo "COOLSMS_FROM_PHONE_NUMBER=${{ secrets.COOLSMS_FROM_PHONE_NUMBER }}" >> ${{ github.workspace }}/.env
+        echo "COOLSMS_API_KEY=${{ secrets.COOLSMS_API_KEY }}" >> ${{ github.workspace }}/.env
+        echo "COOLSMS_API_SECRET_KEY=${{ secrets.COOLSMS_API_SECRET_KEY }}" >> ${{ github.workspace }}/.env
+        echo "MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}" >> ${{ github.workspace }}/.env
+        echo "MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}" >> ${{ github.workspace }}/.env
+        echo "COULD_AWS_S3_REGION=${{ secrets.COULD_AWS_S3_REGION }}" >> ${{ github.workspace }}/.env
+        echo "CLOUD_AWS_S3_ACCESSKEY=${{ secrets.CLOUD_AWS_S3_ACCESSKEY }}" >> ${{ github.workspace }}/.env
+        echo "CLOUD_AWS_S3_SECRETKEY=${{ secrets.CLOUD_AWS_S3_SECRETKEY }}" >> ${{ github.workspace }}/.env
