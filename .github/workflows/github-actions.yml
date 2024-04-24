@@ -23,6 +23,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Create .env file
         uses: ./.github/actions/create-env-file
+        secrets: inherit
       - name: Export environment variables
         run: |
           set -a
