@@ -31,6 +31,6 @@ logging:
 google:
   firebase:
     service:
-      #      secret-key-path: core/infra/src/main/resources/firebase-secret.json
-      secret-key-path: /home/ec2-user/api/store/src/main/resources/firebase-secret.json
+      secret-key-path: /home/ec2-user/firebase-secret.json
+#      secret-key-path: /home/ec2-user/api/store/src/main/resources/firebase-secret.json
       projectId: ${GOOGLE_FIREBASE_SERVICE_PROJECTID}
