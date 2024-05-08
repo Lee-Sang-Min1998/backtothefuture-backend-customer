@@ -29,6 +29,10 @@ services:
         condition: service_healthy
 #    volumes:
 #      - /home/ec2-user/firebase-secret.json
+    volumes:
+      - type: bind
+        source: /home/ec2-user/firebase-secret.json
+        target: /core/infra/src/main/resources/firebase-secret.json
 
   bagtothefuture-store:
     image: ${DOCKER_USERNAME}/bagtothefuture-store:latest # store api 이미지
@@ -81,6 +85,10 @@ services:
         condition: service_healthy
 #    volumes:
 #      - /home/ec2-user/firebase-secret.json
+    volumes:
+      - type: bind
+        source: /home/ec2-user/firebase-secret.json
+        target: /core/infra/src/main/resources/firebase-secret.json
 
   swagger-ui:
     image: ${DOCKER_USERNAME}/bagtothefuture-swagger:latest # swagger 이미지
