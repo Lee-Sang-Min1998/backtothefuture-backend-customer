@@ -50,6 +50,10 @@ services:
     depends_on:
       redis:
         condition: service_healthy
+    volumes:
+      - type: bind
+        source: /home/ec2-user/firebase-secret.json
+        target: /api/store/src/main/resources/firebase-secret.json
 #    volumes:
 #      - /home/ec2-user/firebase-secret.json
 
