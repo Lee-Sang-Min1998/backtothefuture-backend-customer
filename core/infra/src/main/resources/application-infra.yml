@@ -40,9 +40,9 @@ logging:
     org.hibernate:
       sql: debug
 
-google:
-  firebase:
-    service:
-#      secret-key-path: core/infra/src/main/resources/firebase-secret.json
-      secret-key-path: /firebase-secret.json
-      projectId: ${GOOGLE_FIREBASE_SERVICE_PROJECTID}
+#google:
+#  firebase:
+#    service:
+##      secret-key-path: core/infra/src/main/resources/firebase-secret.json
+#      secret-key-path: /firebase-secret.json
+#      projectId: ${GOOGLE_FIREBASE_SERVICE_PROJECTID}
