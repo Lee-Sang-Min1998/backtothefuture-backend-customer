@@ -28,11 +28,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v3.1.0
 
       # firebase-secret.json 복사
-#      - name: create firebase-secret.json
-#        run: |
-#          cd ./core/infra/src/main/resources
-#          touch firebase-secret.json
+      - name: create firebase-secret.json
+        run: |
+          cd ./core/infra/src/main/resources
+          touch firebase-secret.json
 #          echo "${{ secrets.FIREBASE_SECRET }}" | base64 --decode >> firebase-secret.json
+          echo "${{ secrets.FIREBASE_SECRET }}" >> firebase-secret.json
 #      - name: create-json
 #        id: create-json
 #        uses: jsdaniell/create-json@v1.2.3
