@@ -25,7 +25,7 @@ public class FirebaseConfig {
     private void init() {
         try {
             FileInputStream serviceAccount =
-                    new FileInputStream("/home/ec2-user/firebase-secret.json");
+                    new FileInputStream(GOOGLE_APPLICATION_CREDENTIALS);
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
