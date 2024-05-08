@@ -125,7 +125,8 @@ public class SpringSecurityConfig {
                 antMatcher(GET, "/certificate/email"), // 인증 번호 검증
                 antMatcher(GET, "/certificate/email/{email}/status"), // 메일 인증 여부 확인
                 antMatcher(POST, "/member/business/validate-info"), // 사업자등록정보 진위여부 확인
-                antMatcher(POST, "/member/business/validate-status") // 사업자등록번호 상태조회
+                antMatcher(POST, "/member/business/validate-status"), // 사업자등록번호 상태조회
+                antMatcher(GET, "/member/health") // aws 상태 체크
         );
 
         return requestMatchers.toArray(RequestMatcher[]::new);
@@ -176,7 +177,11 @@ public class SpringSecurityConfig {
                         "http://localhost:3000",
                         "http://127.0.0.1:3000",
                         "http://localhost:8000",
-                        "http://127.0.0.1:8000"
+                        "http://127.0.0.1:8000",
+                        "http://43.200.50.128:8000",
+                        "http://43.200.50.128:8080",
+                        "http://43.200.50.128:8081",
+                        "http://43.200.50.128:8084"
                 )
         );
 
