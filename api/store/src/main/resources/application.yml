@@ -28,9 +28,9 @@ logging:
       springframework:
         batch: DEBUG
 
-google:
-  firebase:
-    service:
-#      secret-key-path: /home/ec2-user/firebase-secret.json
-      secret-key-path: api/store/src/main/resources/firebase-secret.json
-      projectId: ${GOOGLE_FIREBASE_SERVICE_PROJECTID}
+#google:
+#  firebase:
+#    service:
+##      secret-key-path: /home/ec2-user/firebase-secret.json
+#      secret-key-path: api/store/src/main/resources/firebase-secret.json
+#      projectId: ${GOOGLE_FIREBASE_SERVICE_PROJECTID}

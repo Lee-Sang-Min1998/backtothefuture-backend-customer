@@ -1,4 +1,4 @@
-package com.backtothefuture.store.config;
+package com.backtothefuture.infra.config;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;

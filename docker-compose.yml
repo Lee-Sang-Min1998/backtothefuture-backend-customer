@@ -53,7 +53,7 @@ services:
     volumes:
       - type: bind
         source: /home/ec2-user/firebase-secret.json
-        target: /api/store/src/main/resources/firebase-secret.json
+        target: /core/infra/src/main/resources/firebase-secret.json
 #    volumes:
 #      - /home/ec2-user/firebase-secret.json
 
