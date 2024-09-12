@@ -2,7 +2,7 @@
   <div align="center"><img src="https://github.com/backtothefuture-team/backtothefuture-backend/assets/67352902/d7e22f5e-baed-4813-8a66-c86c9bb1a2e8" width="20%"/></div>
 </p>
 
-<p align="center">"친환경 식품재고 플랫폼"<br> 버려질 빵에 새로운 생명을 불어넣는 가치소비 플랫폼 입니다.</p>
+<p align="center">"친환경 식품재고 플랫폼"<br></p>
 
 ### 배포 링크 (예정)
 
